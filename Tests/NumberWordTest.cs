@@ -10,10 +10,18 @@ namespace NumberWordTestNS
   public class NumberWordTest
   {
     [Fact]
-    public void Chop_Up_Word()
+    public void ChopNumberIntoDigits()
     {
-      Scrabble test = new Scrabble("hey");
-      Assert.Equal(new char[]{'h', 'e', 'y'}, test.Chop());
+      NumberWord test = new NumberWord(33);
+      Assert.Equal(new char[]{'3', '3'}, test.ChopNum());
+    }
+
+    [Fact]
+    public void LoopThroughCharArray()
+    {
+      NumberWord test = new NumberWord(1);
+      test.ChopNum();
+      Assert.Equal(new List<string>{"One"}, test.LoopChar());
     }
 
 

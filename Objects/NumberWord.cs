@@ -7,20 +7,35 @@ namespace NumberWordNS.Objects
   public class NumberWord
     {
         private int _number;
-        
+        private char[] _numArray;
+        // private List<int> = new List<int>() {"Million", "Hundred", "Thousand"};
+        private List<string> _totalNum;
 
-        public NumberWord (string phrase)
+
+        public NumberWord (int number)
         {
-          _phrase = phrase.ToLower();
+          _number = number;
         }
 
-        public char[] Chop()
+        public char[] ChopNum()
         {
-          char[] newArray = _phrase.ToCharArray();
-          _newArray = newArray;
-          return newArray;
+          string stringNum = _number.ToString();
+          char[] numArray = stringNum.ToCharArray();
+          _numArray = numArray;
+          return numArray;
         }
 
-
+        public List<string> LoopChar()
+        {
+          for(var i = 0; i < _numArray.Length; i++)
+          {
+            Console.WriteLine(_totalNum);
+            if (_numArray[i] == '1')
+            {
+              _totalNum.Add("One");
+            }
+          }
+          return _totalNum;
+    }
   }
 }
