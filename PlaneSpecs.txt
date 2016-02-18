@@ -1,0 +1,3 @@
+1. The business logic should search through a list for instances of a string
+2. If such a match is found, a private integer should increase
+3. It can be tested first for single words before being tested with a longer string

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="Content/css/styles.css">
+
+
+    <title>Scrabble</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Enter a number and it will pass you a wordr</h1>
+
+      <form action="/" method="post">
+        <input name = "phrase" placeholder = "Phrase"></input>
+        <button class = "btn btn-info">What is my number in words</button>
+      </form>
+
+      @{
+        if(@Model != null)
+        {
+          <p>@Model</p>
+          <form action="/">
+            <button class = "btn btn-info">reset</button>
+          </form>
+        }
+
+      }
+
+
+    </div>
+  </body>
+</html>
