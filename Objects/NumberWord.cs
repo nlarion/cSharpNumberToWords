@@ -5,37 +5,105 @@ using System.Linq;
 namespace NumberWordNS.Objects
 {
   public class NumberWord
+  {
+    private int _number;
+    private char[] _numArray;
+    private Dictionary<string, int> _numberDictionary = new Dictionary<string, int>
     {
-        private int _number;
-        private char[] _numArray;
-        // private List<int> = new List<int>() {"Million", "Hundred", "Thousand"};
-        private List<string> _totalNum;
+      {"Thousand", 1000},
+      {"Hundred", 100},
+      {"Ten", 10},
+      {"", 1}
+    };
 
+    private Dictionary<string, int> _translationDictionary = new Dictionary<string, int>
+    {
+      {"One", 1},
+      {"Two", 2},
+      {"Three", 3},
+      {"Four", 4},
+      {"Five", 5},
+      {"Six", 6},
+      {"Seven", 7},
+      {"Eight", 8},
+      {"Nine", 9},
+      {"Ten", 10},
+      {"Eleven", 11},
+      {"Twelve", 12},
+      {"Thirteen", 13},
+      {"Forteen", 14},
+      {"Fifteen", 15},
+      {"Sixteen", 16},
+      {"Seventeen", 17},
+      {"Eighteen", 18},
+      {"Ninteen", 19}
+    };
 
-        public NumberWord (int number)
+    private Dictionary<string, int> _specialDictionary = new Dictionary<string, int>
+    {
+      {"Twenty", 2},
+      {"Thirty", 3},
+      {"Forty", 4},
+      {"Fifty", 5},
+      {"Sixty", 6},
+      {"Seventy", 7},
+      {"Eighty", 8},
+      {"Ninety", 9}
+    };
+
+    public NumberWord (int number)
+    {
+      _number = number;
+    }
+
+    public Dictionary<string,int> GetNumber()
+    {
+       Dictionary<string, int> newDictionary = new Dictionary<string, int>();
+      foreach(KeyValuePair<string, int> entry in _numberDictionary)
+      {
+        if((entry.Key == "Ten" || entry.Key == "Ten Thousand" || entry.Key == "Ten Million")&& (_number/entry.Value)==1)
         {
-          _number = number;
+          newDictionary.Add(entry.Key, 0);
         }
-
-        public char[] ChopNum()
+        else
         {
-          string stringNum = _number.ToString();
-          char[] numArray = stringNum.ToCharArray();
-          _numArray = numArray;
-          return numArray;
+          int totalAmount = (_number/entry.Value) * entry.Value;
+          newDictionary.Add(entry.Key, (_number/entry.Value));
+          _number = _number - totalAmount;
         }
+      }
+      return newDictionary;
+    }
 
-        public List<string> LoopChar()
+    public string BuildWord()
+    {
+      string returnString = "";
+      Dictionary<string,int> getNumber = this.GetNumber();
+
+      foreach(KeyValuePair<string, int> entry in getNumber)
+      {
+        if(entry.Key == "Ten" || entry.Key == "Ten Thousand" || entry.Key == "Ten Million")
         {
-          for(var i = 0; i < _numArray.Length; i++)
+          foreach(KeyValuePair<string, int> number in _specialDictionary)
           {
-            Console.WriteLine(_totalNum);
-            if (_numArray[i] == '1')
+            if(number.Value == entry.Value)
             {
-              _totalNum.Add("One");
+              returnString += number.Key + " ";
             }
           }
-          return _totalNum;
+        }
+        else
+        {
+          foreach(KeyValuePair<string, int> number in _translationDictionary)
+          {
+            if(number.Value == entry.Value)
+            {
+              returnString += number.Key + " " + entry.Key + " ";
+            }
+          }
+        }
+      }
+      return returnString;
     }
   }
 }
