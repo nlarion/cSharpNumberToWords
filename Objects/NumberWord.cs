@@ -10,7 +10,7 @@ namespace NumberWordNS.Objects
     private char[] _numArray;
     private Dictionary<string, int> _numberDictionary = new Dictionary<string, int>
     {
-      {"Trillion", 1000000000},
+      {"Billion", 1000000000},
       {"Hundred Million", 100000000},
       {"Ten Million", 10000000},
       {"Million", 1000000},

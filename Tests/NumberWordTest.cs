@@ -14,7 +14,7 @@ namespace NumberWordTestNS
     {
       NumberWord test = new NumberWord(2222);
       Dictionary<string,int> testResults = new Dictionary<string,int>();
-      testResults.Add("Trillion", 0);
+      testResults.Add("Billion", 0);
       testResults.Add("Hundred Million", 0);
       testResults.Add("Ten Million", 0);
       testResults.Add("Million", 0);
@@ -31,7 +31,7 @@ namespace NumberWordTestNS
     {
       NumberWord test = new NumberWord(2211);
       Dictionary<string,int> testResults = new Dictionary<string,int>();
-      testResults.Add("Trillion", 0);
+      testResults.Add("Billion", 0);
       testResults.Add("Hundred Million", 0);
       testResults.Add("Ten Million", 0);
       testResults.Add("Million", 0);
