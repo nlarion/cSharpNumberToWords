@@ -14,6 +14,12 @@ namespace NumberWordTestNS
     {
       NumberWord test = new NumberWord(2222);
       Dictionary<string,int> testResults = new Dictionary<string,int>();
+      testResults.Add("Trillion", 0);
+      testResults.Add("Hundred Million", 0);
+      testResults.Add("Ten Million", 0);
+      testResults.Add("Million", 0);
+      testResults.Add("Hundred Thousand", 0);
+      testResults.Add("Ten Thousand", 0);
       testResults.Add("Thousand", 2);
       testResults.Add("Hundred", 2);
       testResults.Add("Ten", 2);
@@ -25,6 +31,12 @@ namespace NumberWordTestNS
     {
       NumberWord test = new NumberWord(2211);
       Dictionary<string,int> testResults = new Dictionary<string,int>();
+      testResults.Add("Trillion", 0);
+      testResults.Add("Hundred Million", 0);
+      testResults.Add("Ten Million", 0);
+      testResults.Add("Million", 0);
+      testResults.Add("Hundred Thousand", 0);
+      testResults.Add("Ten Thousand", 0);
       testResults.Add("Thousand", 2);
       testResults.Add("Hundred", 2);
       testResults.Add("Ten", 0);
@@ -34,6 +46,14 @@ namespace NumberWordTestNS
 
     [Fact]
     public void LoopDictionaries()
+    {
+      NumberWord test = new NumberWord(22222);
+      string testString = test.BuildWord();
+      Assert.Equal("Twenty Two Thousand Two Hundred Twenty Two  ", testString);
+    }
+
+    [Fact]
+    public void LoopDictionaries1()
     {
       NumberWord test = new NumberWord(2222);
       string testString = test.BuildWord();
@@ -53,6 +73,13 @@ namespace NumberWordTestNS
       NumberWord test = new NumberWord(2211);
       string testString = test.BuildWord();
       Assert.Equal("Two Thousand Two Hundred Eleven  ", testString);
+    }
+    [Fact]
+    public void LoopDictionaries4()
+    {
+      NumberWord test = new NumberWord(211);
+      string testString = test.BuildWord();
+      Assert.Equal("Two Hundred Eleven  ", testString);
     }
   }
 }
